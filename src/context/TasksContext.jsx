@@ -26,7 +26,7 @@ export function TaskProvider({ children }) {
   const getTasks = async () => {
     try {
       const res = await getTasksRequest();
-      localStorage.getItem('token');
+      localStorage.setItem('token', req.headers.authorization);
       setTasks(res.data);
     } catch (error) {
       console.error(error);
