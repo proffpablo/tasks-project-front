@@ -20,7 +20,7 @@ export function TaskProvider({ children }) {
   const getTasks = async () => {
     try {
       const token = localStorage.getItem('token');
-      res = axios.get('/tasks', { headers: { 'Authorization': token } });
+      res = await axios.get('/tasks', { headers: { 'Authorization': token } });
       setTasks(res.data)
     } catch (error) {
       console.error(error);
@@ -29,13 +29,13 @@ export function TaskProvider({ children }) {
 
   const createTask = async (task) => {
     const token = localStorage.getItem('token');
-    return axios.post('/tasks', task, { headers: { 'Authorization': token } });
+    return await axios.post('/tasks', task, { headers: { 'Authorization': token } });
   }
 
   const deleteTask = async (id) => {
     try {
       const token = localStorage.getItem('token');
-      res = axios.delete(`/tasks/${id}`, { headers: { 'Authorization': token } });
+      res = await axios.delete(`/tasks/${id}`, { headers: { 'Authorization': token } });
       if (res.status === 204) setTasks(tasks.filter(task => task._id !== id));
     } catch (error) {
       console.log(error);
@@ -45,7 +45,7 @@ export function TaskProvider({ children }) {
   const getTask = async (id) => {
     try {
       const token = localStorage.getItem('token');
-      const res = axios.get(`/tasks/${id}`, { headers: { 'Authorization': token } });
+      const res = await axios.get(`/tasks/${id}`, { headers: { 'Authorization': token } });
       return res.data
     } catch (error) {
       console.log(error);
@@ -55,7 +55,7 @@ export function TaskProvider({ children }) {
   const updateTask = async (id, task) => {
     try {
       const token = localStorage.getItem('token');
-      return axios.put(`/tasks/${id}`, task, { headers: { 'Authorization': token } });
+      return await axios.put(`/tasks/${id}`, task, { headers: { 'Authorization': token } });
     } catch (error) {
       console.error(error);
     }
