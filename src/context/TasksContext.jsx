@@ -29,7 +29,7 @@ export function TaskProvider({ children }) {
 
   const createTask = async (task) => {
     const token = localStorage.getItem('token');
-    res = await axios.post('/tasks', task, { headers: { 'Authorization': token } });
+    const res = await axios.post('/tasks', task, { headers: { 'Authorization': token } });
   }
 
   const deleteTask = async (id) => {
