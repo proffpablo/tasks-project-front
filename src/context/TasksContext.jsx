@@ -20,7 +20,7 @@ export function TaskProvider({ children }) {
   const getTasks = async () => {
     try {
       const token = localStorage.getItem('token');
-      res = await axios.get('/tasks', { headers: { 'Authorization': token } });
+      const res = await axios.get('/tasks', { headers: { 'Authorization': token } });
       setTasks(res.data)
     } catch (error) {
       console.error(error);
@@ -35,7 +35,7 @@ export function TaskProvider({ children }) {
   const deleteTask = async (id) => {
     try {
       const token = localStorage.getItem('token');
-      res = await axios.delete(`/tasks/${id}`, { headers: { 'Authorization': token } });
+      const res = await axios.delete(`/tasks/${id}`, { headers: { 'Authorization': token } });
       if (res.status === 204) setTasks(tasks.filter(task => task._id !== id));
     } catch (error) {
       console.log(error);
