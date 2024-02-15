@@ -1,10 +1,4 @@
 import { createContext, useContext, useState } from "react";
-import { 
-  createTaskRequest, 
-  deleteTaskRequest, 
-  getTaskRequest,
-  updateTaskRequest, 
-} from "../api/tasks";
 import axios from "../api/axios"
 
 const TasksContext = createContext();
