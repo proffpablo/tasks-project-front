@@ -20,7 +20,8 @@ export function TaskProvider({ children }) {
   const getTasks = async () => {
     try {
       const token = localStorage.getItem('token');
-      return axios.get('/tasks', { headers: { 'Authorization': token } });
+      res = axios.get('/tasks', { headers: { 'Authorization': token } });
+      setTasks(res.data)
     } catch (error) {
       console.error(error);
     }
