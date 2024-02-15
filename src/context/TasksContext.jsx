@@ -1,11 +1,11 @@
 import { createContext, useContext, useState } from "react";
 import { 
   createTaskRequest, 
-  getTasksRequest, 
   deleteTaskRequest, 
   getTaskRequest,
   updateTaskRequest, 
 } from "../api/tasks";
+import axios from "../api/axios"
 
 const TasksContext = createContext();
 
@@ -25,8 +25,9 @@ export function TaskProvider({ children }) {
 
   const getTasks = async () => {
     try {
-      const res = await getTasksRequest();
-      setTasks(res.data);
+      const token = localStorage.getItem('token');
+      console.log(token);
+      return axios.get('/tasks', { headers: { 'Authorization': token } });
     } catch (error) {
       console.error(error);
     }
